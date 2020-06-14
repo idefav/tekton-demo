@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  generateName: generic-pr-
+  name: generic-pipeline-run
+spec:
+  pipelineRef:
+    name: pipeline
+  resources:
+    - name: git-source
+      resourceRef:
+        name: git-source
+  params:
+    - name: imageUrl
+      value: registry.cn-hangzhou.aliyuncs.com/idefav/tekton-demo
+    - name: imageTag
+      value: latest
+  serviceAccountName: tekton-demo

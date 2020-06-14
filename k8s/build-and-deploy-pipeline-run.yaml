@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: tekton-demo-
+  name: build-and-deploy-pipeline-run19
+  namespace: tekton-demo
+spec:
+  pipelineRef:
+    name: build-and-deploy-pipeline
+  params:
+    - name: gitUrl
+      value: git@github.com:idefav/tekton-demo.git
+    - name: gitRevision
+      value: master
+    - name: pathToYamlFile
+      value: k8s/deploy/deployment.yaml
+    - name: imageUrl
+      value: registry.cn-hangzhou.aliyuncs.com/idefav/tekton-demo
+    - name: imageTag
+      value: "0.0.1"
+  serviceAccountName: tekton-demo
+  workspaces:
+    - name: git-source
+      persistentVolumeClaim:
+        claimName: tekton-demo-pvc
+    - name: maven-settings
+      emptyDir: {}
+    - name: m2
+      persistentVolumeClaim:
+        claimName: tekton-demo-m2-pvc

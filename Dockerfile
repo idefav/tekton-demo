@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/idefav/openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-alpine
 
 RUN mkdir /app
 WORKDIR /app

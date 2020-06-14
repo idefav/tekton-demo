@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: docker-auth
+  namespace: tekton-demo
+  annotations:
+    tekton.dev/docker-0: https://registry.cn-hangzhou.aliyuncs.com # Described below
+type: kubernetes.io/basic-auth
+stringData:
+  username: wzs2009_hi@126.com
+  password: --
