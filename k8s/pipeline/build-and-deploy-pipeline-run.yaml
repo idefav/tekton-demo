@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   generateName: tekton-demo-
-  name: build-and-deploy-pipeline-run19
+  name: build-and-deploy-pipeline-run20
   namespace: tekton-demo
 spec:
   pipelineRef:
@@ -17,7 +17,7 @@ spec:
     - name: imageUrl
       value: registry.cn-hangzhou.aliyuncs.com/idefav/tekton-demo
     - name: imageTag
-      value: "0.0.1"
+      value: "0.0.2"
   serviceAccountName: tekton-demo
   workspaces:
     - name: git-source
