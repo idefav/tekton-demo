@@ -16,7 +16,7 @@ spec:
         app: tekton-demo
     spec:
       containers:
-        - image: registry.cn-hangzhou.aliyuncs.com/idefav/tekton-demo:latest
+        - image: __IMAGE__:__DIGEST__
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
