@@ -43,3 +43,26 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 10
+      serviceAccountName: tekton-demo-deploy
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tekton-demo-deploy
+  namespace: tekton-demo
+secrets:
+  - name: aliyun
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tekton-demo-deploy-binding
+  namespace: tekton-demo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: tekton-demo-deploy
+    namespace: tekton-demo
