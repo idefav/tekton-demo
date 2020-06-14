@@ -16,7 +16,7 @@ spec:
         app: tekton-demo
     spec:
       containers:
-        - image: __IMAGE__:__DIGEST__
+        - image: __IMAGE__
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
